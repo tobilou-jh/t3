@@ -94,3 +94,4 @@ void buscar_producto(char nombres[][30], float precios[], int cont) {
         printf("Producto no encontrado.\n");
     }
 }
+// gcc main.c funciones.c -o t3-1 y ./t3-1

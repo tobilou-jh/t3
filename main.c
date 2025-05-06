@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "funciones.h"
 
 int main(int argc, char *argv[]) {
@@ -17,10 +18,21 @@ int main(int argc, char *argv[]) {
                     printf("Limite de productos alcanzado.\n");
                     break;
                 } else {
-                    printf("Ingrese el nombre del producto: \n");
-                    fflush(stdin);
-                    fgets(nombre[cont], 30, stdin);
-                    lens(nombre[cont]);
+                    int nombre_valido = 0;
+                    while (!nombre_valido) {
+                        printf("Ingrese el nombre del producto: \n");
+                        fflush(stdin);
+                        fgets(nombre[cont], 30, stdin);
+                        lens(nombre[cont]);
+                        nombre_valido = 1; 
+                        for (int i = 0; i < cont; i++) {
+                            if (strcmp(nombre[i], nombre[cont]) == 0) {
+                                printf("El producto ya existe. Intente con otro nombre.\n");
+                                nombre_valido = 0;
+                                break;
+                            }
+                        }
+                    }
                     precio[cont] = validar_precio();
                     printf("Producto ingresado: %s, Precio: %.2f\n", nombre[cont], precio[cont]);
                     cont++;
@@ -71,3 +83,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
+// gcc main.c funciones.c -o t3-1 y ./t3-1
