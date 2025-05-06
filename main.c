@@ -83,4 +83,4 @@ int main(int argc, char *argv[]) {
 
     return 0;
 }
-// gcc main.c funciones.c -o t3-1 y ./t3-1
+// gcc main.c funciones.c -o t3 y ./t3
